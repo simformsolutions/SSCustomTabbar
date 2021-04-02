@@ -16,7 +16,7 @@ public class SSCustomTabBar: UITabBar {
         get {
             return UIColor(cgColor: kLayerFillColor)
         }
-        set{
+        set {
             kLayerFillColor = newValue.cgColor
         }
     }
@@ -24,10 +24,10 @@ public class SSCustomTabBar: UITabBar {
     
     /// Wave Height
     @IBInspectable var waveHeight: CGFloat {
-        get{
+        get {
             return self.minimalHeight
         }
-        set{
+        set {
             self.minimalHeight = newValue
         }
     }
@@ -38,7 +38,7 @@ public class SSCustomTabBar: UITabBar {
         get {
             return self.unselectedItemTintColor ?? .black
         }
-        set{
+        set {
             self.unselectedItemTintColor = newValue
         }
     }
@@ -48,7 +48,7 @@ public class SSCustomTabBar: UITabBar {
         get {
             return UIColor(cgColor: self.layer.shadowColor ?? UIColor.clear.cgColor)
         }
-        set{
+        set {
             self.layer.shadowColor = newValue.cgColor
         }
     }
@@ -58,7 +58,7 @@ public class SSCustomTabBar: UITabBar {
         get {
             return layer.shadowRadius
         }
-        set{
+        set {
             self.layer.shadowRadius = newValue
         }
     }
@@ -157,6 +157,7 @@ public class SSCustomTabBar: UITabBar {
 extension SSCustomTabBar {
     
     func setupTabBar() {
+        
         self.isTranslucent = true
         self.backgroundColor = UIColor.clear
         self.backgroundImage = UIImage()
@@ -208,20 +209,19 @@ extension SSCustomTabBar {
         leftPoint4.center = CGPoint(x: 0, y: minimalY+minimalHeight)
         rightPoint4.center = CGPoint(x: self.bounds.width, y: minimalY+minimalHeight)
         
-        let imaganaeryFram = CGRect(x: locationX-(width/2), y: minimalY, width: width, height: minimalHeight)
+        let imaginaryFrame = CGRect(x: locationX-(width/2), y: minimalY, width: width, height: minimalHeight)
         
-        leftPoint3.center = CGPoint(x: imaganaeryFram.minX, y: imaganaeryFram.maxY)
+        leftPoint3.center = CGPoint(x: imaginaryFrame.minX, y: imaginaryFrame.maxY)
         
+        let topOffset: CGFloat = imaginaryFrame.width / 4.3
+        let bottomOffset: CGFloat = imaginaryFrame.width / 4.5
         
-        let topOffset: CGFloat = imaganaeryFram.width / 4.3
-        let bottomOffset: CGFloat = imaganaeryFram.width / 4.5
-        
-        leftPoint2.center = CGPoint(x: imaganaeryFram.midX, y: imaganaeryFram.minY)
-        leftPoint1.center = CGPoint(x: imaganaeryFram.minX + bottomOffset, y: imaganaeryFram.maxY)
-        centerPoint1.center = CGPoint(x: imaganaeryFram.midX - topOffset, y: imaganaeryFram.minY)
-        centerPoint2.center = CGPoint(x: imaganaeryFram.maxX, y: imaganaeryFram.maxY)
-        rightPoint1.center = CGPoint(x: imaganaeryFram.midX + topOffset, y: imaganaeryFram.minY)
-        rightPoint2.center = CGPoint(x: imaganaeryFram.maxX - bottomOffset, y: imaganaeryFram.maxY)
+        leftPoint2.center = CGPoint(x: imaginaryFrame.midX, y: imaginaryFrame.minY)
+        leftPoint1.center = CGPoint(x: imaginaryFrame.minX + bottomOffset, y: imaginaryFrame.maxY)
+        centerPoint1.center = CGPoint(x: imaginaryFrame.midX - topOffset, y: imaginaryFrame.minY)
+        centerPoint2.center = CGPoint(x: imaginaryFrame.maxX, y: imaginaryFrame.maxY)
+        rightPoint1.center = CGPoint(x: imaginaryFrame.midX + topOffset, y: imaginaryFrame.minY)
+        rightPoint2.center = CGPoint(x: imaginaryFrame.maxX - bottomOffset, y: imaginaryFrame.maxY)
     }
     
     
